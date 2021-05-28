@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-
+// import '../css/TableItem.css'
+import "../css/Table.css";
 
 const TableItem = (props) => {
   return (
-    <div >
-        <div className='Country'>
+    <div  className='row'>
+        <div className='rowItem'>
         {props.country}
         </div>
-        <div className='Age'>
+        <div className='rowItem'>
         {props.age}
         </div>
-        <div className='Sex'>
+        <div className='rowItem'>
         {props.sex}
         </div>
     </div>
