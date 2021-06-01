@@ -8,6 +8,7 @@ let data = [
   { country: "China", age: "33", sex: "men" },
 ];
 
+
 const Table1 = () => {
   return (
     <div>
@@ -18,8 +19,9 @@ const Table1 = () => {
       </div>
       <div className="Table_container">
         <div className="Table_element">
+          
           {data.map((el) => (
-            <TableItem country={el.country} age={el.age} sex={el.sex} />
+            <TableItem  country={el.country} age={el.age} sex={el.sex} />
           ))}
         </div>
       </div>
