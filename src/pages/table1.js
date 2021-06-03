@@ -3,9 +3,9 @@ import "../css/Table.css";
 import TableItem from "./TableItem";
 
 let dataArray = [
-  { country: "Belarus", age: "21", sex: "men" },
-  { country: "Portugal", age: "44", sex: "men" },
-  { country: "China", age: "33", sex: "men" },
+  { id: 0, country: "Belarus", age: "21", sex: "men" },
+  { id: 1, country: "Portugal", age: "44", sex: "men" },
+  { id: 2, country: "China", age: "33", sex: "men" },
 ];
 
 const Table1 = () => {
@@ -13,7 +13,13 @@ const Table1 = () => {
   console.log(data);
 
   const addNewItem = () => {
-    setData((oldArray) => [...oldArray, { country: "", age: "", sex: "" }]);
+    let lastIndex = data[data.length - 1].id;
+    console.log(lastIndex);
+
+    setData((oldArray) => [
+      ...oldArray,
+      { id: lastIndex + 1, country: "", age: "", sex: "" },
+    ]);
   };
 
   return (
