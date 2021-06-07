@@ -22,6 +22,18 @@ const Table1 = () => {
     ]);
   };
 
+  const onDeleteClick = () => {
+    setData((oldArray) => [
+      ...oldArray.filter((data) => {
+        console.log(data.id);
+        console.log(checked);
+        return data.id !== checked;
+      }),
+    ]);
+  };
+
+  const [checked, setChecked] = useState(null);
+
   return (
     <div>
       <div className="Header">
@@ -32,7 +44,14 @@ const Table1 = () => {
       <div className="Table_container">
         <div className="Table_element">
           {data.map((el) => (
-            <TableItem country={el.country} age={el.age} sex={el.sex} />
+            <TableItem
+              id={el.id}
+              setChecked={setChecked}
+              checked={checked}
+              country={el.country}
+              age={el.age}
+              sex={el.sex}
+            />
           ))}
         </div>
       </div>
@@ -41,7 +60,7 @@ const Table1 = () => {
           <button onClick={addNewItem}>New</button>
         </div>
         <div className="DeleteButton">
-          <button>Delete</button>
+          <button onClick={onDeleteClick}>Delete</button>
         </div>
       </div>
     </div>
