@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState,  } from "react";
 import "../css/Table.css";
 import TableItem from "./TableItem";
 
@@ -51,6 +51,7 @@ const Table1 = () => {
               country={el.country}
               age={el.age}
               sex={el.sex}
+              setData={setData}
             />
           ))}
         </div>
