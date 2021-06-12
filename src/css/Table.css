@@ -37,3 +37,56 @@
 .Buttons{
     display: flex;
 }
+
+.buttonSave {
+    width: 20px;
+    height: 20px;
+}
+.buttonCancel {
+    width: 20px;
+    height: 20px;
+}
+.btnCancel {
+    background-color: rgba(255, 0, 0, 0.781);
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 10px 10px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+.btnSave {
+    background-color: rgba(0, 255, 55, 0.664);
+    border: none; /* Remove borders */
+    color: rgb(12, 12, 12); /* White text */
+    padding: 10px 10px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+.btnEdite {
+    background-color: rgba(0, 60, 255, 0.692);
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 10px 10px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+.btnNew {
+    background-color: rgba(0, 60, 255, 0.692);
+    border: none; /* Remove borders */
+    color: rgb(20, 20, 20); /* White text */
+    padding: 10px 20px; 
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+.btnDelete {
+    background-color: rgba(0, 60, 255, 0.692);
+    border: none; /* Remove borders */
+    color: rgb(20, 20, 20); /* White text */
+    padding: 10px 20px; 
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+.Table_element{
+    cursor:pointer;
+}

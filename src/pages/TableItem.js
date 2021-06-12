@@ -34,8 +34,8 @@ const TableItem = (props) => {
       ...lastArray.map((data) => {
         return data;
       }),
-    ]);}
-    
+    ]);
+  };
 
   return (
     <div className="row">
@@ -51,38 +51,42 @@ const TableItem = (props) => {
       </label>
       <div className="rowItem">
         {isStatus ? (
-          <input defaultValue={props.country} ref={countryField}></input>
+          <input  className='inputEdite' defaultValue={props.country} ref={countryField}></input>
         ) : (
-        props.country
+          props.country
         )}
       </div>
       <div className="rowItem">
         {isStatus ? (
-          <input defaultValue={props.age} ref={ageField}></input>
+          <input className='inputEdite' defaultValue={props.age} ref={ageField}></input>
         ) : (
           props.age
         )}
       </div>
       <div className="rowItem">
         {isStatus ? (
-          <input defaultValue={props.sex} ref={sexField}></input>
+          <input className='inputEdite' defaultValue={props.sex} ref={sexField}></input>
         ) : (
           props.sex
         )}
       </div>
       <div className="editeButton">
         {isStatus ? (
-          <button className="buttonSave" onClick={saveItem}>
-            {" "}
-            Save{" "}
+          <button className="btnSave" onClick={saveItem}>
+            <ion-icon name="checkmark-outline"></ion-icon>
           </button>
         ) : (
-          <button className="buttonEdite" onClick={editeItem}>
+          <button className="btnEdite" onClick={editeItem}>
             {" "}
-            Edite
+            <ion-icon name="create-outline"></ion-icon>
           </button>
         )}
-        {isStatus ? <button onClick={cancelItem}>Cancel</button> : null}
+        {isStatus ? (
+          <button className="btnCancel" onClick={cancelItem}>
+            {" "}
+            <i class="fa fa-close"></i>
+          </button>
+        ) : null}
       </div>
     </div>
   );

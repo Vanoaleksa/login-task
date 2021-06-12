@@ -58,10 +58,10 @@ const Table1 = () => {
       </div>
       <div className="Buttons">
         <div className="NewButton">
-          <button onClick={addNewItem}>New</button>
+          <button  className='btnNew'onClick={addNewItem}><ion-icon name="add-outline"></ion-icon></button>
         </div>
         <div className="DeleteButton">
-          <button onClick={onDeleteClick}>Delete</button>
+          <button className='btnDelete' onClick={onDeleteClick}><ion-icon name="trash-outline"></ion-icon></button>
         </div>
       </div>
     </div>
