@@ -53,14 +53,17 @@
     padding: 10px 10px; /* Some padding */
     font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 5px;
 }
 .btnSave {
-    background-color: rgba(0, 255, 55, 0.664);
+    background-color:whitesmoke;
     border: none; /* Remove borders */
     color: rgb(12, 12, 12); /* White text */
     padding: 10px 10px; /* Some padding */
     font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 5px;
+    margin: 0 10px;
 }
 .btnEdite {
     background-color: rgba(0, 60, 255, 0.692);
@@ -69,22 +72,39 @@
     padding: 10px 10px; /* Some padding */
     font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 5px;
 }
 .btnNew {
-    background-color: rgba(0, 60, 255, 0.692);
-    border: none; /* Remove borders */
+    background-color: whitesmoke;
+    border: 1px solid grey; /* Remove borders */
     color: rgb(20, 20, 20); /* White text */
-    padding: 10px 20px; 
+    padding: 10px 60px; 
     font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 5px;
+    margin:10px 10px;
+}
+
+.btnNew:hover{
+    background-color: grey
 }
 .btnDelete {
-    background-color: rgba(0, 60, 255, 0.692);
-    border: none; /* Remove borders */
+    background-color: whitesmoke;
+    border:1px solid grey; /* Remove borders */
     color: rgb(20, 20, 20); /* White text */
-    padding: 10px 20px; 
+    padding: 10px 60px; 
     font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 5px;
+    margin:10px 10px;
+
+    
+}
+
+.btnDelete:hover{
+    background-color: grey
+
+
 }
 
 .Table_element{

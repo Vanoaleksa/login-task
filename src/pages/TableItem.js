@@ -65,7 +65,7 @@ const TableItem = (props) => {
       </div>
       <div className="rowItem">
         {isStatus ? (
-          <input className='inputEdite' defaultValue={props.sex} ref={sexField}></input>
+          <input className='inputEdite'  defaultValue={props.sex} ref={sexField}></input>
         ) : (
           props.sex
         )}
