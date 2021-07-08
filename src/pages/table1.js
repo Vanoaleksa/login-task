@@ -1,16 +1,24 @@
-import React, { Component, useState,  } from "react";
+import React, { Component, useState, useEffect } from "react";
 import "../css/Table.css";
 import TableItem from "./TableItem";
-
-let dataArray = [
-  { id: 0, country: "Belarus", age: "21", sex: "men" },
-  { id: 1, country: "Portugal", age: "44", sex: "men" },
-  { id: 2, country: "China", age: "33", sex: "men" },
-];
+import axios from "axios";
 
 const Table1 = () => {
-  const [data, setData] = useState(dataArray);
-  console.log(data);
+  const [appState, setAppState] = useState();
+
+  useEffect(() => {
+    const apiUrl = "https://localhost:5000/dataArray";
+    axios.get(apiUrl).then((resp) => {
+      console.log(resp);
+      let dataArray = resp.dataArray;
+      setAppState(dataArray);
+    });
+  }, []);
+
+console.log(setAppState)
+   
+
+  const [data, setData] = useState([]);
 
   const addNewItem = () => {
     let lastIndex = data[data.length - 1].id;
@@ -43,7 +51,7 @@ const Table1 = () => {
       </div>
       <div className="Table_container">
         <div className="Table_element">
-          {data.map((el) => (
+          {/* {data.map((el) => (
             <TableItem
               id={el.id}
               setChecked={setChecked}
@@ -53,15 +61,19 @@ const Table1 = () => {
               sex={el.sex}
               setData={setData}
             />
-          ))}
+          ))} */}
         </div>
       </div>
       <div className="Buttons">
         <div className="NewButton">
-          <button  className='btnNew'onClick={addNewItem}><ion-icon name="add-outline"></ion-icon></button>
+          <button className="btnNew" onClick={addNewItem}>
+            <ion-icon name="add-outline"></ion-icon>
+          </button>
         </div>
         <div className="DeleteButton">
-          <button className='btnDelete' onClick={onDeleteClick}><ion-icon name="trash-outline"></ion-icon></button>
+          <button className="btnDelete" onClick={onDeleteClick}>
+            <ion-icon name="trash-outline"></ion-icon>
+          </button>
         </div>
       </div>
     </div>
