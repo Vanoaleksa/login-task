@@ -4,21 +4,18 @@ import TableItem from "./TableItem";
 import axios from "axios";
 
 const Table1 = () => {
-  const [appState, setAppState] = useState();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    const apiUrl = "https://localhost:5000/dataArray";
+    const apiUrl = "http://localhost:5000/dataArray";
     axios.get(apiUrl).then((resp) => {
       console.log(resp);
-      let dataArray = resp.dataArray;
-      setAppState(dataArray);
+      let dataArray = resp.data;
+      setData(dataArray);
     });
   }, []);
 
-console.log(setAppState)
-   
-
-  const [data, setData] = useState([]);
+  console.log(data);
 
   const addNewItem = () => {
     let lastIndex = data[data.length - 1].id;
@@ -51,7 +48,7 @@ console.log(setAppState)
       </div>
       <div className="Table_container">
         <div className="Table_element">
-          {/* {data.map((el) => (
+          {data.map((el) => (
             <TableItem
               id={el.id}
               setChecked={setChecked}
@@ -61,7 +58,7 @@ console.log(setAppState)
               sex={el.sex}
               setData={setData}
             />
-          ))} */}
+          ))}
         </div>
       </div>
       <div className="Buttons">
