@@ -28,13 +28,20 @@ const Table1 = () => {
   };
 
   const onDeleteClick = () => {
-    setData((oldArray) => [
-      ...oldArray.filter((data) => {
-        console.log(data.id);
-        console.log(checked);
-        return data.id !== checked;
-      }),
-    ]);
+    console.log(checked);
+    axios.delete(`http://localhost:5000/delete/${checked}`).then((res) => {
+      console.log("res", res.data);
+      setData(res.data);
+    });
+    
+
+    // setData((oldArray) => [
+    //   ...oldArray.filter((data) => {
+    //     console.log(data.id);
+    //     console.log(checked);
+    //     return data.id !== checked;
+    //   }),
+    // ]);
   };
 
   const [checked, setChecked] = useState(null);
