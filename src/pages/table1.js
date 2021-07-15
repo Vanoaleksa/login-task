@@ -18,13 +18,17 @@ const Table1 = () => {
   console.log(data);
 
   const addNewItem = () => {
-    let lastIndex = data[data.length - 1].id;
-    console.log(lastIndex);
+    axios.post("http://localhost:5000/add").then((res) => {
+      setData(res.data);
+    });
 
-    setData((oldArray) => [
-      ...oldArray,
-      { id: lastIndex + 1, country: "", age: "", sex: "" },
-    ]);
+    // let lastIndex = data[data.length - 1].id;
+    // console.log(lastIndex);
+
+    // setData((oldArray) => [
+    //   ...oldArray,
+    //   { id: lastIndex + 1, country: "", age: "", sex: "" },
+    // ]);
   };
 
   const onDeleteClick = () => {
@@ -33,7 +37,6 @@ const Table1 = () => {
       console.log("res", res.data);
       setData(res.data);
     });
-    
 
     // setData((oldArray) => [
     //   ...oldArray.filter((data) => {
