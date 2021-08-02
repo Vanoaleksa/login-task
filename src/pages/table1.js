@@ -21,14 +21,6 @@ const Table1 = () => {
     axios.post("http://localhost:5000/add").then((res) => {
       setData(res.data);
     });
-
-    // let lastIndex = data[data.length - 1].id;
-    // console.log(lastIndex);
-
-    // setData((oldArray) => [
-    //   ...oldArray,
-    //   { id: lastIndex + 1, country: "", age: "", sex: "" },
-    // ]);
   };
 
   const onDeleteClick = () => {
@@ -37,14 +29,6 @@ const Table1 = () => {
       console.log("res", res.data);
       setData(res.data);
     });
-
-    // setData((oldArray) => [
-    //   ...oldArray.filter((data) => {
-    //     console.log(data.id);
-    //     console.log(checked);
-    //     return data.id !== checked;
-    //   }),
-    // ]);
   };
 
   const [checked, setChecked] = useState(null);
