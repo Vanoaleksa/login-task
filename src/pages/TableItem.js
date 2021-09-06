@@ -1,12 +1,19 @@
 import React, { Component, useState, useRef } from "react";
 import "../css/Table.css";
+import { selectItemsActions } from "../redux/selectItems/selectItemsActions";
+import { useDispatch,  } from "react-redux";
+
 
 const TableItem = (props) => {
+  console.log('props',props)
   const countryField = useRef(null);
   const sexField = useRef(null);
   const ageField = useRef(null);
 
   const [isStatus, setIsStatus] = useState(false);
+
+  const dispatch = useDispatch();
+  
   const editeItem = () => {
     setIsStatus(!isStatus);
   };
@@ -37,6 +44,11 @@ const TableItem = (props) => {
     ]);
   };
 
+  const selectCheckbox = () => {
+    dispatch(selectItemsActions.selectcheckbox(props));
+    console.log('props',props)
+  }
+
   return (
     <div className="row">
       <label>
@@ -44,8 +56,8 @@ const TableItem = (props) => {
           <input
             type="checkbox"
             id={props.id}
-            checked={props.checked === props.id}
-            onChange={() => props.setChecked(props.id)}
+            checked={props.checked === props.id} 
+            onChange={() => { props.setChecked(props.id); selectCheckbox()  }}
           ></input>
         </div>
       </label>

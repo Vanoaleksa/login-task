@@ -1,0 +1,3 @@
+export const SELECT_ITEMS = "SELECT_ITEMS";
+export const CLEAR_ITEMS = "CLEAR_ITEMS";
+export const SELECTCHECKBOX = "SELECTCHECKBOX";
