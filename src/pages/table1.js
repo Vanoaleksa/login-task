@@ -20,8 +20,6 @@ const Table1 = () => {
   }, []);
 
   const dispatch = useDispatch();
-  console.log(data);
-
   const addNewItem = () => {
     axios.post("http://localhost:5000/add").then((res) => {
       setData(res.data);
@@ -36,9 +34,14 @@ const Table1 = () => {
     });
   };
 
+
   const selectItem = () => {
+    console.log('data',data)
     dispatch(selectItemsActions.select(data));
-    setChecked();
+    let checkedArray = data.map(el => { return {...el, isChecked:true}});
+    console.log('checkedarray',checkedArray)
+    setData(checkedArray)
+    
   };
 
   const clearItem = () => {
@@ -72,6 +75,7 @@ console.log('checked', checked)
                   age={el.age}
                   sex={el.sex}
                   setData={setData}
+                  isChecked={el.isChecked}
                 />
               ))}
             </div>
