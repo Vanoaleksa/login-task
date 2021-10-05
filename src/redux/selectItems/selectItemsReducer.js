@@ -9,26 +9,28 @@ export const selectItemsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SELECT_ITEMS:
       let payload = action.payload;
+      console.log('payload', payload)
       return {
         ...state,
         selectItems: payload,
       };
     case CLEAR_ITEMS:
       return {
-        // сравнение props.id и action.id 
         ...state,
         selectItems: null,
       };
     case SELECTCHECKBOX:
-      // let newArray = action.payload.selectItems;
-      // let selected = newArray;
-      // let b = selected.map((el)=> {
-      // {action.payload.props.id === el.id ? (el) : null};  
-      // }) 
+      let oldArray = action.payload.selectItems;
+      console.log('old',oldArray)
+      let newArray = oldArray;
+      let sendArray = newArray.map((el) => { 
+      {el.el.isChecked = true ? (el) : null};
+    
+      }) 
   
-      // return {
-      //   ...state,selectItems:selected
-      // };
+      return {
+        ...state,selectItems:sendArray,
+      };
 
     default:
       return state;

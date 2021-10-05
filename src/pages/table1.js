@@ -34,25 +34,29 @@ const Table1 = () => {
     });
   };
 
-
-  const selectItem = () => {
-    console.log('data',data)
+  const selectAllItems = () => {
+    console.log("data", data);
     dispatch(selectItemsActions.select(data));
-    let checkedArray = data.map(el => { return {...el, isChecked:true}});
-    console.log('checkedarray',checkedArray)
-    setData(checkedArray)
-    
+    let checkedArray = data.map((el) => {
+      return { ...el, isChecked: true };
+    });
+    console.log("checkedarray", checkedArray);
+    setData(checkedArray);
   };
 
-  const clearItem = () => {
+  const clearItems = () => {
     dispatch(selectItemsActions.clear(data));
+    let checkedArray = data.map((el) => {
+      return { ...el, isChecked: false };
+    });
+    setData(checkedArray);
   };
 
   const selected = useSelector(selectedSelector);
   console.log("selected", selected);
 
   const [checked, setChecked] = useState(null);
-console.log('checked', checked)
+  console.log("checked", checked);
 
   return (
     <div>
@@ -76,6 +80,7 @@ console.log('checked', checked)
                   sex={el.sex}
                   setData={setData}
                   isChecked={el.isChecked}
+                  el={el}
                 />
               ))}
             </div>
@@ -92,12 +97,12 @@ console.log('checked', checked)
               </button>
             </div>
             <div className="SelectButton">
-              <button className="btnSelect" onClick={selectItem}>
+              <button className="btnSelect" onClick={selectAllItems}>
                 <ion-icon name="checkbox-outline"></ion-icon>{" "}
               </button>
             </div>
             <div className="ClearButton">
-              <button className="btnClear" onClick={clearItem}>
+              <button className="btnClear" onClick={clearItems}>
                 <ion-icon name="square-outline"></ion-icon>
               </button>
             </div>

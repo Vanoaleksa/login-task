@@ -45,7 +45,10 @@ const TableItem = (props) => {
   };
 
   const selectCheckbox = () => {
-    dispatch(selectItemsActions.selectcheckbox(props));
+     
+    // let sendArray = props.map(el =>{ return {el.id === props.checked ? (el) : null}}  )
+    // console.log('sendarray', sendArray)
+    dispatch(selectItemsActions.selectcheckbox(props.el));
     console.log('props',props)
   }
 
@@ -56,7 +59,7 @@ const TableItem = (props) => {
           <input
             type="checkbox"
             id={props.id}
-            checked={props.checked === props.id} 
+            checked={props.isChecked} 
             onChange={() => { props.setChecked(props.id); selectCheckbox()  }}
           ></input>
         </div>
