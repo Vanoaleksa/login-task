@@ -5,7 +5,7 @@ import { useDispatch,  } from "react-redux";
 
 
 const TableItem = (props) => {
-  console.log('props',props)
+  console.log('props',props.el)
   const countryField = useRef(null);
   const sexField = useRef(null);
   const ageField = useRef(null);
@@ -45,11 +45,12 @@ const TableItem = (props) => {
   };
 
   const selectCheckbox = () => {
+    console.log('propsss', props.el)
      
-    // let sendArray = props.map(el =>{ return {el.id === props.checked ? (el) : null}}  )
+    // let sendArray = props.map(el => { return el.id === props.el.checked ? (el) : null}  )
     // console.log('sendarray', sendArray)
     dispatch(selectItemsActions.selectcheckbox(props.el));
-    console.log('props',props)
+
   }
 
   return (
@@ -60,7 +61,7 @@ const TableItem = (props) => {
             type="checkbox"
             id={props.id}
             checked={props.isChecked} 
-            onChange={() => { props.setChecked(props.id); selectCheckbox()  }}
+            onChange={() => { props.setChecked(props.id); selectCheckbox(); }}
           ></input>
         </div>
       </label>

@@ -1,11 +1,15 @@
 import { CLEAR_ITEMS, SELECTCHECKBOX, SELECT_ITEMS } from "./selectItemsConstans";
 
 const initialState = {
-  selectItems: null,
+  selectItems: [],
 };
 
 export const selectItemsReducer = (state = initialState, action) => {
   console.log("initialstateREDUCER", state);
+  let b = state.selectItems;
+
+
+  console.log('b', b)
   switch (action.type) {
     case SELECT_ITEMS:
       let payload = action.payload;
@@ -17,19 +21,13 @@ export const selectItemsReducer = (state = initialState, action) => {
     case CLEAR_ITEMS:
       return {
         ...state,
-        selectItems: null,
+        selectItems: [],
       };
     case SELECTCHECKBOX:
-      let oldArray = action.payload.selectItems;
-      console.log('old',oldArray)
-      let newArray = oldArray;
-      let sendArray = newArray.map((el) => { 
-      {el.el.isChecked = true ? (el) : null};
-    
-      }) 
-  
+      let aa= action.payload.selectItems;
+      console.log('aaa',aa)
       return {
-        ...state,selectItems:sendArray,
+        ...state, selectItems: [...state.selectItems,action.payload.selectItems],
       };
 
     default:
