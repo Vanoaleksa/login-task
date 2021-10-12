@@ -19,10 +19,10 @@ export const selectItemsActions = {
     };
   },
 
-  selectcheckbox(selectItems, props) {
+  selectcheckbox(selectItems) {
     return {
       type: SELECTCHECKBOX,
-      payload: { selectItems, props },
+      payload: { selectItems},
     };
   },
 };
