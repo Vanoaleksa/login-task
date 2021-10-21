@@ -3,9 +3,8 @@ import "../css/Table.css";
 import TableItem from "./TableItem";
 import axios from "axios";
 import DropDown from "./DropDown";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { selectItemsActions } from "../redux/selectItems/selectItemsActions";
-import { selectedSelector } from "../redux/selectItems/selectItemsSelectors";
 
 const Table1 = () => {
   const [data, setData] = useState([]);
@@ -51,9 +50,6 @@ const Table1 = () => {
     });
     setData(checkedArray);
   };
-
-  const selected = useSelector(selectedSelector);
-  console.log("selected", selected);
 
   const [checked, setChecked] = useState(null);
   console.log("checked", checked);
@@ -109,7 +105,7 @@ const Table1 = () => {
           </div>
         </div>
         <div className="secondContent">
-          <DropDown selected={selected} />
+          <DropDown />
         </div>
       </div>
     </div>

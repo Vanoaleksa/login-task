@@ -1,12 +1,12 @@
 import React, { Component, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectedSelector } from "../redux/selectItems/selectItemsSelectors";
 import "../css/Table.css";
 
-const DropDown = ({selected}) => {
-  console.log('sell',selected)
-  console.log('selsel',selected.selectItems)
+const DropDown = () => {
+  const selected = useSelector(selectedSelector);
+  console.log("selected", selected);
 
-  
-  
   return (
     <div>
       <div className="dropDown">
@@ -14,8 +14,8 @@ const DropDown = ({selected}) => {
           <span>Selected:</span>
         </div>
         <div className="contentDrop">
-          {selected && selected.selectItems 
-            ? selected.selectItems.map((item) => (
+          {selected
+            ? selected.map((item) => (
                 <div>
                   {" "}
                   {item.country}, {item.age}, {item.sex}{" "}
