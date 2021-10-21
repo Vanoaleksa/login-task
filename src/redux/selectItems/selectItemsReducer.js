@@ -14,6 +14,7 @@ export const selectItemsReducer = (state = initialState, action) => {
     case SELECT_ITEMS:
       let payload = action.payload;
       console.log('payload', payload)
+      console.log('stateselectall',state)
       return {
         ...state,
         selectItems: payload,
@@ -25,10 +26,23 @@ export const selectItemsReducer = (state = initialState, action) => {
       };
     case SELECTCHECKBOX:
       let aa= action.payload.selectItems;
+      let a = action.payload;
+      console.log('payload',a)
+  
+
+
+      let selectItems = []
+      let x = selectItems.push(aa);
       console.log('aaa',aa)
+      console.log('selectItems',selectItems)
+      console.log('xxx',x)
+      console.log('stateselect',state)
       return {
-        ...state, selectItems: [...state.selectItems,action.payload.selectItems],
+        ...state,selectItems,selectItems:selectItems,
+        // ...state, selectItems: [action.payload],
+        // ...state.selectItems,action.payload
       };
+      
 
     default:
       return state;
