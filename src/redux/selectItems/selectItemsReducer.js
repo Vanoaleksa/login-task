@@ -12,7 +12,7 @@ export const selectItemsReducer = (state = initialState, action) => {
   console.log('b', b)
   switch (action.type) {
     case SELECT_ITEMS:
-      let payload = action.payload;
+      let payload = action.payload.selectItems;
       console.log('payload', payload)
       console.log('stateselectall',state)
       return {
