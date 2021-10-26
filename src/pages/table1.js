@@ -21,7 +21,11 @@ const Table1 = () => {
   const dispatch = useDispatch();
   const addNewItem = () => {
     axios.post("http://localhost:5000/add").then((res) => {
-      setData(res.data);
+      console.log("datadata", data);
+      console.log("res", res.data);
+      let c = res.data[res.data.length - 1];
+      let b = [...data, c];
+      setData(b);
     });
   };
 
