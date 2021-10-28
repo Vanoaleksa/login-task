@@ -45,10 +45,30 @@ const TableItem = (props) => {
   };
 
   const selectCheckbox = () => {
-    console.log('propsss', props.el)
-     
+    console.log('propsss', props.el.isChecked)
+    
+    // let checkedArray = props.el.map((el) => {
+    //   return { ...el, isChecked: true };
+    // });
+    //  setData(checkedArray)
     // let sendArray = props.map(el => { return el.id === props.el.checked ? (el) : null}  )
     // console.log('sendarray', sendArray)
+    props.setData((lastArray) => [
+      ...lastArray.map((data) => {
+        if (props.id === data.id & props.isChecked === false) {
+          return {
+            id: props.id,
+            country: props.country,
+            age: props.age,
+            sex: props.sex,
+            isChecked:true,
+          };
+        } else {
+          return data;
+        }
+      }),
+    ]);
+    
     dispatch(selectItemsActions.selectcheckbox(props.el));
 
   }
@@ -61,7 +81,7 @@ const TableItem = (props) => {
             type="checkbox"
             id={props.id}
             checked={props.isChecked} 
-            onChange={() => { props.setChecked(props.id); selectCheckbox(); }}
+            onChange={() => { props.setChecked(true); selectCheckbox();  }}
           ></input>
         </div>
       </label>
