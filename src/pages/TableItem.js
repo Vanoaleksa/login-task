@@ -55,7 +55,7 @@ const TableItem = (props) => {
     // console.log('sendarray', sendArray)
     props.setData((lastArray) => [
       ...lastArray.map((data) => {
-        if (props.id === data.id & props.isChecked === false) {
+        if (props.id === data.id ) {
           return {
             id: props.id,
             country: props.country,
@@ -64,7 +64,7 @@ const TableItem = (props) => {
             isChecked:true,
           };
         } else {
-          return data;
+          return { ...data,isChecked:false};
         }
       }),
     ]);
