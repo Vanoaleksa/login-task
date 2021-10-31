@@ -81,7 +81,7 @@ const TableItem = (props) => {
             type="checkbox"
             id={props.id}
             checked={props.isChecked} 
-            onChange={() => { props.setChecked(true); selectCheckbox();  }}
+            onChange={() => { props.setChecked(props.id); selectCheckbox();  }}
           ></input>
         </div>
       </label>
