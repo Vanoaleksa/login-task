@@ -55,21 +55,24 @@ const TableItem = (props) => {
     // console.log('sendarray', sendArray)
     props.setData((lastArray) => [
       ...lastArray.map((data) => {
-        if (props.id === data.id ) {
+        if (props.id === data.id || data.isChecked === true  ) {
           return {
-            id: props.id,
-            country: props.country,
-            age: props.age,
-            sex: props.sex,
-            isChecked:true,
+            ...data,isChecked:true
+            // id: props.id,
+            // country: props.country,
+            // age: props.age,
+            // sex: props.sex,
+            // isChecked:true,
           };
         } else {
           return { ...data,isChecked:false};
+          // return { ...data,isChecked:false};
         }
       }),
     ]);
     
-    dispatch(selectItemsActions.selectcheckbox(props.el));
+    dispatch(selectItemsActions.selectcheckbox(props));
+    // dispatch(selectItemsActions.selectcheckbox(props.el));
 
   }
 
