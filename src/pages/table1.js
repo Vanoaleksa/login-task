@@ -23,9 +23,9 @@ const Table1 = () => {
     axios.post("http://localhost:5000/add").then((res) => {
       console.log("datadata", data);
       console.log("res", res.data);
-      let c = res.data[res.data.length - 1];
-      let b = [...data, c];
-      setData(b);
+      // let c = res.data[res.data.length - 1];
+      // let b = [...data, c];
+      setData(res.data);
     });
   };
 
