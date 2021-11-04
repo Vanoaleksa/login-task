@@ -1,11 +1,10 @@
 import React, { Component, useState, useRef } from "react";
 import "../css/Table.css";
 import { selectItemsActions } from "../redux/selectItems/selectItemsActions";
-import { useDispatch,  } from "react-redux";
-
+import { useDispatch } from "react-redux";
 
 const TableItem = (props) => {
-  console.log('props',props.el)
+  console.log("props", props.el);
   const countryField = useRef(null);
   const sexField = useRef(null);
   const ageField = useRef(null);
@@ -13,7 +12,7 @@ const TableItem = (props) => {
   const [isStatus, setIsStatus] = useState(false);
 
   const dispatch = useDispatch();
-  
+
   const editeItem = () => {
     setIsStatus(!isStatus);
   };
@@ -45,8 +44,8 @@ const TableItem = (props) => {
   };
 
   const selectCheckbox = () => {
-    console.log('propsss', props.el.isChecked)
-    
+    console.log("propsss", props.el.isChecked);
+
     // let checkedArray = props.el.map((el) => {
     //   return { ...el, isChecked: true };
     // });
@@ -55,26 +54,17 @@ const TableItem = (props) => {
     // console.log('sendarray', sendArray)
     props.setData((lastArray) => [
       ...lastArray.map((data) => {
-        if (props.id === data.id || data.isChecked === true  ) {
-          return {
-            ...data,isChecked:true
-            // id: props.id,
-            // country: props.country,
-            // age: props.age,
-            // sex: props.sex,
-            // isChecked:true,
-          };
+        if (props.id === data.id) {
+          return data.isChecked === true? { ...data, isChecked: false } : { ...data, isChecked: true };
         } else {
-          return { ...data,isChecked:false};
-          // return { ...data,isChecked:false};
+          return { ...data };
         }
       }),
     ]);
-    
+
     dispatch(selectItemsActions.selectcheckbox(props));
     // dispatch(selectItemsActions.selectcheckbox(props.el));
-
-  }
+  };
 
   return (
     <div className="row">
@@ -83,28 +73,43 @@ const TableItem = (props) => {
           <input
             type="checkbox"
             id={props.id}
-            checked={props.isChecked} 
-            onChange={() => { props.setChecked(props.id); selectCheckbox();  }}
+            checked={props.isChecked}
+            onChange={() => {
+              props.setChecked(props.id);
+              selectCheckbox();
+            }}
           ></input>
         </div>
       </label>
       <div className="rowItem">
         {isStatus ? (
-          <input  className='inputEdite' defaultValue={props.country} ref={countryField}></input>
+          <input
+            className="inputEdite"
+            defaultValue={props.country}
+            ref={countryField}
+          ></input>
         ) : (
           props.country
         )}
       </div>
       <div className="rowItem">
         {isStatus ? (
-          <input className='inputEdite' defaultValue={props.age} ref={ageField}></input>
+          <input
+            className="inputEdite"
+            defaultValue={props.age}
+            ref={ageField}
+          ></input>
         ) : (
           props.age
         )}
       </div>
       <div className="rowItem">
         {isStatus ? (
-          <input className='inputEdite'  defaultValue={props.sex} ref={sexField}></input>
+          <input
+            className="inputEdite"
+            defaultValue={props.sex}
+            ref={sexField}
+          ></input>
         ) : (
           props.sex
         )}

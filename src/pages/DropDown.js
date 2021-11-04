@@ -14,7 +14,7 @@ const DropDown = () => {
           <span>Selected:</span>
         </div>
         <div className="contentDrop">
-          {selected && selected.length
+          {selected && selected.length 
             ? selected.map((item) => (
                 <div>
                   {" "}

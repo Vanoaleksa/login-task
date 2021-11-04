@@ -50,7 +50,7 @@ export const selectItemsReducer = (state = initialState, action) => {
       let xx = selectItems;
 
       console.log("xx", xx);
-      // let x = selectItems.map((el) => (el != aa ? selectItems.push(aa) : null));  Главный коммит 
+      let xz = selectItems.map((el) => (el.isChecked === true  ? selectItems.push(aa) : null));  
 
       // const uniq = new Set (selectItems)
       // const backarr = [...uniq]
