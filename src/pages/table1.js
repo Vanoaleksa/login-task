@@ -40,6 +40,7 @@ const Table1 = () => {
   const selectAllItems = () => {
     console.log("data", data);
     dispatch(selectItemsActions.select(data));
+
     let checkedArray = data.map((el) => {
       return { ...el, isChecked: true };
     });

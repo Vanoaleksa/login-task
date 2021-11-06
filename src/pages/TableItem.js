@@ -46,23 +46,18 @@ const TableItem = (props) => {
   const selectCheckbox = () => {
     console.log("propsss", props.el.isChecked);
 
-    // let checkedArray = props.el.map((el) => {
-    //   return { ...el, isChecked: true };
-    // });
-    //  setData(checkedArray)
-    // let sendArray = props.map(el => { return el.id === props.el.checked ? (el) : null}  )
-    // console.log('sendarray', sendArray)
     props.setData((lastArray) => [
       ...lastArray.map((data) => {
-        if (props.id === data.id) {
+        if (props.id === data.id) {        dispatch(selectItemsActions.selectcheckbox(props));
+
+
           return data.isChecked === true? { ...data, isChecked: false } : { ...data, isChecked: true };
         } else {
           return { ...data };
         }
       }),
     ]);
-
-    dispatch(selectItemsActions.selectcheckbox(props));
+console.log('disp',dispatch)
     // dispatch(selectItemsActions.selectcheckbox(props.el));
   };
 

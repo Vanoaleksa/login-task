@@ -45,50 +45,18 @@ export const selectItemsReducer = (state = initialState, action) => {
       let a = action.payload;
       console.log("payload", a);
 
+
       let selectItems = state.selectItems;
+      console.log("selectItems1", selectItems);
+
       let x = selectItems.push(aa);
-      let xx = selectItems;
+      
+      
 
-      console.log("xx", xx);
-      let xz = selectItems.map((el) => (el.isChecked === true  ? selectItems.push(aa) : null));  
-
-      // const uniq = new Set (selectItems)
-      // const backarr = [...uniq]
-      // console.log('uniq',uniq)
-
-      // getUniqTags(selectItems);
-
-      //  getUnique = function (xx) {
-      //   var i = 0,
-      //   current,
-      //   length = xx.length,
-      //   unique = [];
-      //   for (; i < length; i++) {
-      //     current = xx[i];
-      //     if (!~unique.indexOf(current)) {
-      //       unique.push(current);
-      //     }
-      //   }
-      //   return unique;
-      // };
-
-      // xx.reduce((unique, item) => {
-      //   { console.log("item", item);}
-      //   return unique.includes(item) ? unique : [...unique, item];
-      // }, []);
-      // console.log('unique',unique)
-
-      //   function getIndex(aa, selectItems, prop) {
-      //     for(var i = 0; i < selectItems.length; i++) {
-      //         if(selectItems[i][prop] === aa) {
-      //             return selectItems.push(aa);
-      //         }
-      //     }
-      //     return null; //to handle the case where the value doesn't exist
-      // }
-      console.log("aa", aa);
-      console.log("selectItems", selectItems);
+      console.log("selectItems2", selectItems);
       console.log("stateselect", state);
+      console.log("aa", aa);
+
       return {
         ...state,
         selectItems,
