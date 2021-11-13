@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/Table.css";
 import TableItem from "./TableItem";
 import axios from "axios";
@@ -8,6 +8,10 @@ import { selectItemsActions } from "../redux/selectItems/selectItemsActions";
 
 const Table1 = () => {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  const [checked, setChecked] = useState(null);
+
+  console.log("checked", checked);
 
   useEffect(() => {
     const apiUrl = "http://localhost:5000/dataArray";
@@ -18,13 +22,8 @@ const Table1 = () => {
     });
   }, []);
 
-  const dispatch = useDispatch();
   const addNewItem = () => {
     axios.post("http://localhost:5000/add").then((res) => {
-      console.log("datadata", data);
-      console.log("res", res.data);
-      // let c = res.data[res.data.length - 1];
-      // let b = [...data, c];
       setData(res.data);
     });
   };
@@ -56,9 +55,7 @@ const Table1 = () => {
     setData(checkedArray);
   };
 
-  const [checked, setChecked] = useState(null);
-  console.log("checked", checked);
-
+  
   return (
     <div>
       <div className="content">

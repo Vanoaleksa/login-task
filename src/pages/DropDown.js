@@ -1,5 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { selectedSelector } from "../redux/selectItems/selectItemsSelectors";
 import "../css/Table.css";
 
