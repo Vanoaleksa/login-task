@@ -17,8 +17,7 @@ const initialState = {
 };
 
 export const selectItemsReducer = (state = initialState, action) => {
-  console.log("initialstateREDUCER", state);
-
+  
   switch (action.type) {
     case GET_ITEMS:
       return {
