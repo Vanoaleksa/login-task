@@ -1,6 +1,8 @@
 .Header{
     display: flex; 
     width: 100%;
+    font-weight: bolder;
+    font-size: x-large;
 }
 
 .columnelem{
@@ -17,14 +19,14 @@
 .Table_element{
     display: flex; 
     flex-direction: column;
-    width: 100%;
+    width: 500px;
     cursor:pointer;
 } 
 
 .row{
     -webkit-flex-grow: 1; 
     flex-grow: 1;
-    border: 1px solid #8a8887;
+    
     padding: 3px;
     padding-left: 15px;
 }
@@ -33,6 +35,7 @@
     display: flex;
     flex-grow: 1;
     margin: 0 50px;
+    font-weight: bold;
 }
 
 .Buttons{
@@ -145,6 +148,7 @@
 
 .firstContent{
     width: 50%;
+    margin: 20% 33%;
 }
 .secondContent{
     display: flex;
@@ -173,4 +177,9 @@
 .content{
     display: flex;
     justify-content: flex-start;
+    
+}
+
+.inputEdite{
+    border-radius: 6px;
 }

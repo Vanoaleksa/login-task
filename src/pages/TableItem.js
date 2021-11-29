@@ -3,10 +3,9 @@ import "../css/Table.css";
 import { selectItemsActions } from "../redux/selectItems/selectItemsActions";
 import { useDispatch } from "react-redux";
 
+
 const TableItem = (props) => {
-  const countryField = useRef(null);
-  const sexField = useRef(null);
-  const ageField = useRef(null);
+  const toDoItemField = useRef(null);
   const [isStatus, setIsStatus] = useState(false);
   const dispatch = useDispatch();
 
@@ -14,21 +13,23 @@ const TableItem = (props) => {
     setIsStatus(!isStatus);
   };
   const saveItem = () => {
+    
     setIsStatus(!isStatus);
-    props.setData((lastArray) => [
-      ...lastArray.map((data) => {
-        if (props.id === data.id) {
-          return {
-            id: props.id,
-            country: countryField.current.value,
-            age: ageField.current.value,
-            sex: sexField.current.value,
-          };
-        } else {
-          return data;
-        }
-      }),
-    ]);
+    
+    const actiondata = props.data.map((el) => {
+      if (props.id === el.id) {
+        return {
+          id:props.id,
+          toDoItem: toDoItemField.current.value,
+        };
+      } else {
+        return el;
+      }
+    })
+    dispatch(selectItemsActions.updateitem(actiondata))
+    props.setData(actiondata)
+    
+    
   };
 
   const cancelItem = () => {
@@ -41,7 +42,6 @@ const TableItem = (props) => {
   };
 
   const selectCheckbox = () => {
-    console.log("propsss", props.el.isChecked);
     props.setData((lastArray) => [
       ...lastArray.map((data) => {
         if (props.id === data.id) {
@@ -55,6 +55,7 @@ const TableItem = (props) => {
     ]);
     dispatch(selectItemsActions.selectcheckbox(props));
   };
+
 
   return (
     <div className="row">
@@ -75,35 +76,14 @@ const TableItem = (props) => {
         {isStatus ? (
           <input
             className="inputEdite"
-            defaultValue={props.country}
-            ref={countryField}
+            defaultValue={props.toDoItem}
+            ref={toDoItemField}
           ></input>
         ) : (
-          props.country
+          props.toDoItem
         )}
       </div>
-      <div className="rowItem">
-        {isStatus ? (
-          <input
-            className="inputEdite"
-            defaultValue={props.age}
-            ref={ageField}
-          ></input>
-        ) : (
-          props.age
-        )}
-      </div>
-      <div className="rowItem">
-        {isStatus ? (
-          <input
-            className="inputEdite"
-            defaultValue={props.sex}
-            ref={sexField}
-          ></input>
-        ) : (
-          props.sex
-        )}
-      </div>
+      
       <div className="editeButton">
         {isStatus ? (
           <button className="btnSave" onClick={saveItem}>

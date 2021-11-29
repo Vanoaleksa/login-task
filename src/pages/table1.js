@@ -1,39 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "../css/Table.css";
 import TableItem from "./TableItem";
-import axios from "axios";
-import DropDown from "./DropDown";
-import { useDispatch } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import { selectItemsActions } from "../redux/selectItems/selectItemsActions";
+import { selectedSelector } from "../redux/selectItems/selectItemsSelectors";
 
 const Table1 = () => {
   const [data, setData] = useState([]);
-  const dispatch = useDispatch();
   const [checked, setChecked] = useState(null);
-
-  console.log("checked", checked);
+  const dispatch = useDispatch();
+  const dataArray = useSelector(selectedSelector);
 
   useEffect(() => {
-    const apiUrl = "http://localhost:5000/dataArray";
-    axios.get(apiUrl).then((resp) => {
-      console.log(resp);
-      let dataArray = resp.data;
-      setData(dataArray);
-    });
+    dispatch(selectItemsActions.getitems(data));
+    setData(dataArray.selectItems.selectItems);
+    console.log("dataarray", dataArray);
   }, []);
 
   const addNewItem = () => {
-    axios.post("http://localhost:5000/add").then((res) => {
-      setData(res.data);
-    });
+    console.log("adddata", data);
+    dispatch(selectItemsActions.additem(data));
+    setData(dataArray.selectItems.selectItems);
   };
 
   const onDeleteClick = () => {
-    console.log(checked);
-    axios.delete(`http://localhost:5000/delete/${checked}`).then((res) => {
-      console.log("res", res.data);
-      setData(res.data);
-    });
+    let checkedArray = data.filter((el) => (el.isChecked !== true ));
+    dispatch(selectItemsActions.deleteitem(checkedArray))
+    setData(checkedArray)
   };
 
   const selectAllItems = () => {
@@ -43,7 +37,6 @@ const Table1 = () => {
     let checkedArray = data.map((el) => {
       return { ...el, isChecked: true };
     });
-    console.log("checkedarray", checkedArray);
     setData(checkedArray);
   };
 
@@ -55,16 +48,11 @@ const Table1 = () => {
     setData(checkedArray);
   };
 
-  
   return (
     <div>
       <div className="content">
         <div className="firstContent">
-          <div className="Header">
-            <span className="columnelem">Name</span>
-            <span className="columnelem">Age</span>
-            <span className="columnelem">Sex</span>
-          </div>
+          <div className="Header">To Do List:</div>
 
           <div className="Table_container">
             <div className="Table_element">
@@ -73,10 +61,9 @@ const Table1 = () => {
                   id={el.id}
                   setChecked={setChecked}
                   checked={checked}
-                  country={el.country}
-                  age={el.age}
-                  sex={el.sex}
+                  toDoItem={el.toDoItem}
                   setData={setData}
+                  data ={data}
                   isChecked={el.isChecked}
                   el={el}
                 />
@@ -104,11 +91,10 @@ const Table1 = () => {
                 <ion-icon name="square-outline"></ion-icon>
               </button>
             </div>
+            {/* <DropDown /> */}
           </div>
         </div>
-        <div className="secondContent">
-          <DropDown />
-        </div>
+        <div className="secondContent"></div>
       </div>
     </div>
   );

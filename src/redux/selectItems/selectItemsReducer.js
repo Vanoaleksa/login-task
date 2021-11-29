@@ -2,36 +2,76 @@ import {
   CLEAR_ITEMS,
   SELECTCHECKBOX,
   SELECT_ITEMS,
+  GET_ITEMS,
+  ADD_ITEM,
+  DELETE_ITEM,
+  UPDATE_ITEM,
 } from "./selectItemsConstans";
 
+
 const initialState = {
-  selectItems: [],
+  selectItems: [
+    { id: 0, toDoItem: "Meeting 14:00", isChecked: false },
+    { id: 1, toDoItem: "Date 19:30", isChecked: false },
+    { id: 2, toDoItem: "Call mom", isChecked: false },
+  ],
 };
 
 export const selectItemsReducer = (state = initialState, action) => {
   console.log("initialstateREDUCER", state);
- 
-  
+
   switch (action.type) {
+    case GET_ITEMS:
+      return {
+        ...state,
+      };
+
+    case ADD_ITEM:
+      let newarray = state;
+      let lastIndex = newarray.selectItems[newarray.selectItems.length - 1].id;
+      newarray = [
+        ...newarray.selectItems,
+        { id: lastIndex + 1, country: "", isChecked: false },
+      ];
+      return {
+        ...state,
+        selectItems: newarray,
+      };
+
+    case DELETE_ITEM:
+      let payloadDelete = action.payload.selectItems;
+      return {
+        state,
+        selectItems: payloadDelete,
+      };
+
     case SELECT_ITEMS:
       let payload = action.payload.selectItems;
       return {
         ...state,
         selectItems: payload,
       };
+
     case CLEAR_ITEMS:
       return {
         ...state,
         selectItems: [],
       };
+
     case SELECTCHECKBOX:
       let selectItems = action.payload.selectItems;
-      // let selectItems = state.selectItems;
-      console.log("selectItems", selectItems);
-      // console.log("actionItem", actionItem);
-
       return {
-        ...state,selectItems:selectItems
+        ...state,
+        selectItems: selectItems,
+      };
+
+    case UPDATE_ITEM:
+      let actiondata = action.payload.selectItems;
+      console.log('actiond',actiondata)
+     
+      return {
+        ...state,
+        selectItems: actiondata
       };
 
     default:
