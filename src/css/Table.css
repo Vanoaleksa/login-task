@@ -148,7 +148,8 @@
 
 .firstContent{
     width: 50%;
-    margin: 20% 33%;
+    margin: 15% 33%;
+    position: fixed;
 }
 .secondContent{
     display: flex;
