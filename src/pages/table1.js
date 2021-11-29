@@ -12,18 +12,18 @@ const Table1 = () => {
   const dataArray = useSelector(selectedSelector);
 
   useEffect(() => {
-    dispatch(selectItemsActions.getitems());
+    dispatch(selectItemsActions.getItems());
     setData(dataArray.selectItems.selectItems);
   }, []);
 
   const addNewItem = () => {
-    dispatch(selectItemsActions.additem(data));
+    dispatch(selectItemsActions.addItem(data));
     setData(dataArray.selectItems.selectItems);
   };
 
   const onDeleteClick = () => {
     let checkedArray = data.filter((el) => el.isChecked !== true);
-    dispatch(selectItemsActions.deleteitem(checkedArray));
+    dispatch(selectItemsActions.deleteItem(checkedArray));
     setData(checkedArray);
   };
 

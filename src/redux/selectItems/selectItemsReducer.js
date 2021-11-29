@@ -26,22 +26,22 @@ export const selectItemsReducer = (state = initialState, action) => {
       };
 
     case ADD_ITEM:
-      let newarray = state.selectItems;
-      if (newarray.length > 0) {
-        let lastIndex = newarray[newarray.length - 1].id;
-        newarray = [
-          ...newarray,
+      let newArray = state.selectItems;
+      if (newArray.length > 0) {
+        let lastIndex = newArray[newArray.length - 1].id;
+        newArray = [
+          ...newArray,
           { id: lastIndex + 1, toDoItem: "", isChecked: false },
         ];
         return {
           ...state,
-          selectItems: newarray,
+          selectItems: newArray,
         };
       } else {
-        newarray = [...newarray, { id: 0, toDoItem: "", isChecked: false }];
+        newArray = [...newArray, { id: 0, toDoItem: "", isChecked: false }];
         return {
           ...state,
-          selectItems: newarray,
+          selectItems: newArray,
         };
       }
 
@@ -73,12 +73,10 @@ export const selectItemsReducer = (state = initialState, action) => {
       };
 
     case UPDATE_ITEM:
-      let actiondata = action.payload.selectItems;
-      console.log("actiond", actiondata);
-
+      let actionData = action.payload.selectItems;
       return {
         ...state,
-        selectItems: actiondata,
+        selectItems: actionData,
       };
 
     default:

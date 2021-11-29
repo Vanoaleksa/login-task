@@ -7,16 +7,16 @@ import { useDispatch} from "react-redux";
 
 const TableItem = (props) => {
   const toDoItemField = useRef(null);
-  const [isStatus, setIsStatus] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   
-  const editeItem = () => {
-    setIsStatus(!isStatus);
+  const editItem = () => {
+    setIsOpen(!isOpen);
   };
 
   const saveItem = () => {
-    setIsStatus(!isStatus);
-    const actiondata = props.data.map((el) => {
+    setIsOpen(!isOpen);
+    const actionData = props.data.map((el) => {
       if (props.id === el.id) {
         return {
           id:props.id,
@@ -26,12 +26,12 @@ const TableItem = (props) => {
         return el;
       }
     })
-    dispatch(selectItemsActions.updateitem(actiondata))
-    props.setData(actiondata)
+    dispatch(selectItemsActions.updateItem(actionData))
+    props.setData(actionData)
   };
 
   const cancelItem = () => {
-    setIsStatus(!isStatus);
+    setIsOpen(!isOpen);
     props.setData((lastArray) => [
       ...lastArray.map((data) => {
         return data;
@@ -51,7 +51,7 @@ const TableItem = (props) => {
         }
       }),
     ]);
-    dispatch(selectItemsActions.selectcheckbox(props));
+    dispatch(selectItemsActions.selectCheckbox(props));
   };
   
 
@@ -71,7 +71,7 @@ const TableItem = (props) => {
         </div>
       </label>
       <div className="rowItem">
-        {isStatus ? (
+        {isOpen ? (
           <input
             className="inputEdite"
             defaultValue={props.toDoItem}
@@ -82,17 +82,17 @@ const TableItem = (props) => {
         )}
       </div>
       <div className="editeButton">
-        {isStatus ? (
+        {isOpen ? (
           <button className="btnSave" onClick={saveItem}>
             <ion-icon name="checkmark-outline"></ion-icon>
           </button>
         ) : (
-          <button className="btnEdite" onClick={editeItem}>
+          <button className="btnEdite" onClick={editItem}>
             {" "}
             <ion-icon name="create-outline"></ion-icon>
           </button>
         )}
-        {isStatus ? (
+        {isOpen ? (
           <button className="btnCancel" onClick={cancelItem}>
             {" "}
             <i class="fa fa-close"></i>

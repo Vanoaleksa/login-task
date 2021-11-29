@@ -23,34 +23,34 @@ export const selectItemsActions = {
     };
   },
 
-  selectcheckbox(selectItems) {
+  selectCheckbox(selectItems) {
     return {
       type: SELECTCHECKBOX,
       payload: { selectItems},
     };
   },
-  getitems(selectItems){
+  getItems(selectItems){
     return{
       type: GET_ITEMS,
       payload: {selectItems}
     }
   },
 
-  additem(selectItems){
+  addItem(selectItems){
     return{
       type:ADD_ITEM,
       payload: {selectItems}
     }
   },
 
-  deleteitem(selectItems){
+  deleteItem(selectItems){
     return{
       type:DELETE_ITEM,
       payload: {selectItems}
     }
   },
 
-  updateitem(selectItems){
+  updateItem(selectItems){
     return{
       type:UPDATE_ITEM,
       payload: {selectItems}
