@@ -1,8 +1,13 @@
+#HTML{
+    background-color: #f0f3ff;
+}
+
 .Header{
     display: flex; 
     width: 100%;
     font-weight: bolder;
-    font-size: x-large;
+    font-size: 30px;
+    margin-left: 2%;
 }
 
 .columnelem{
@@ -14,6 +19,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-left: 2%;
 } 
 
 .Table_element{
@@ -37,6 +43,13 @@
     margin: 0 50px;
     font-weight: bold;
 }
+.row.crossed-line{
+    -webkit-flex-grow: 1; 
+    flex-grow: 1;
+    padding: 3px;
+    padding-left: 15px;
+    text-decoration: line-through;
+}
 
 .Buttons{
     display: flex;
@@ -53,78 +66,80 @@
 }
 
 .btnCancel {
-    background-color: rgba(255, 0, 0, 0.781);
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 10px 10px; /* Some padding */
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
+    background-color: rgb(245 64 64 / 78%);
+    border: none; 
+    color: white; 
+    padding: 10px 10px; 
+    font-size: 16px; 
+    cursor: pointer; 
     border-radius: 5px;
 }
 
 .btnSave {
-    background-color:whitesmoke;
-    border: none; /* Remove borders */
-    color: rgb(12, 12, 12); /* White text */
-    padding: 10px 10px; /* Some padding */
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
+    background-color: #93e3e766;
+    border: none; 
+    color: rgb(12, 12, 12); 
+    padding: 10px 10px; 
+    font-size: 16px; 
+    cursor: pointer; 
     border-radius: 5px;
     margin: 0 10px;
+    
+
 
 }
 
 .btnEdite {
     background-color: rgba(0, 60, 255, 0.692);
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 10px 10px; /* Some padding */
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    border-radius: 5px;
+    border: none; 
+    color: white; 
+    padding: 10px 10px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 10px;
 }
 
 .btnNew {
     background-color: whitesmoke;
-    border: 1px solid grey; /* Remove borders */
-    color: rgb(20, 20, 20); /* White text */
-    padding: 5px 40px; 
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    border-radius: 5px;
+    border: 1px solid grey; 
+    color: rgb(20, 20, 20); 
+    padding: 5px 25px;
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 10px;
     margin:10px 10px;
 }
 
 .btnDelete {
     background-color: whitesmoke;
-    border:1px solid grey; /* Remove borders */
-    color: rgb(20, 20, 20); /* White text */
-    padding: 5px 40px; 
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    border-radius: 5px;
+    border:1px solid grey; 
+    color: rgb(20, 20, 20); 
+    padding: 5px 25px;
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 10px;
     margin:10px 10px;
 }
 
 .btnSelect {
     background-color: whitesmoke;
-    border:1px solid grey; /* Remove borders */
-    color: rgb(20, 20, 20); /* White text */
-    padding: 5px 40px; 
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    border-radius: 5px;
+    border:1px solid grey; 
+    color: rgb(20, 20, 20); 
+    padding: 5px 25px;
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 10px;
     margin:10px 10px;
 }
 
 .btnClear {
     background-color: whitesmoke;
-    border:1px solid grey; /* Remove borders */
-    color: rgb(20, 20, 20); /* White text */
-    padding: 5px 40px; 
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    border-radius: 5px;
+    border:1px solid grey; 
+    color: rgb(20, 20, 20); 
+    padding: 5px 25px;
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 10px;
     margin:10px 10px;
 }
 
@@ -183,4 +198,5 @@
 
 .inputEdite{
     border-radius: 6px;
+    background-color: #cfb8d333;
 }

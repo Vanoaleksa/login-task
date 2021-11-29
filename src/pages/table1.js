@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/Table.css";
 import TableItem from "./TableItem";
-
 import { useDispatch, useSelector } from "react-redux";
 import { selectItemsActions } from "../redux/selectItems/selectItemsActions";
 import { selectedSelector } from "../redux/selectItems/selectItemsSelectors";
@@ -13,27 +12,23 @@ const Table1 = () => {
   const dataArray = useSelector(selectedSelector);
 
   useEffect(() => {
-    dispatch(selectItemsActions.getitems(data));
+    dispatch(selectItemsActions.getitems());
     setData(dataArray.selectItems.selectItems);
-    console.log("dataarray", dataArray);
   }, []);
 
   const addNewItem = () => {
-    console.log("adddata", data);
     dispatch(selectItemsActions.additem(data));
     setData(dataArray.selectItems.selectItems);
   };
 
   const onDeleteClick = () => {
-    let checkedArray = data.filter((el) => (el.isChecked !== true ));
-    dispatch(selectItemsActions.deleteitem(checkedArray))
-    setData(checkedArray)
+    let checkedArray = data.filter((el) => el.isChecked !== true);
+    dispatch(selectItemsActions.deleteitem(checkedArray));
+    setData(checkedArray);
   };
 
   const selectAllItems = () => {
-    console.log("data", data);
     dispatch(selectItemsActions.select(data));
-
     let checkedArray = data.map((el) => {
       return { ...el, isChecked: true };
     });
@@ -53,7 +48,6 @@ const Table1 = () => {
       <div className="content">
         <div className="firstContent">
           <div className="Header">To Do List:</div>
-
           <div className="Table_container">
             <div className="Table_element">
               {data.map((el) => (
@@ -63,7 +57,7 @@ const Table1 = () => {
                   checked={checked}
                   toDoItem={el.toDoItem}
                   setData={setData}
-                  data ={data}
+                  data={data}
                   isChecked={el.isChecked}
                   el={el}
                 />
@@ -91,10 +85,8 @@ const Table1 = () => {
                 <ion-icon name="square-outline"></ion-icon>
               </button>
             </div>
-            {/* <DropDown /> */}
           </div>
         </div>
-        <div className="secondContent"></div>
       </div>
     </div>
   );

@@ -1,21 +1,21 @@
 import React, {  useState, useRef } from "react";
 import "../css/Table.css";
 import { selectItemsActions } from "../redux/selectItems/selectItemsActions";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
+
 
 
 const TableItem = (props) => {
   const toDoItemField = useRef(null);
   const [isStatus, setIsStatus] = useState(false);
   const dispatch = useDispatch();
-
+  
   const editeItem = () => {
     setIsStatus(!isStatus);
   };
+
   const saveItem = () => {
-    
     setIsStatus(!isStatus);
-    
     const actiondata = props.data.map((el) => {
       if (props.id === el.id) {
         return {
@@ -28,8 +28,6 @@ const TableItem = (props) => {
     })
     dispatch(selectItemsActions.updateitem(actiondata))
     props.setData(actiondata)
-    
-    
   };
 
   const cancelItem = () => {
@@ -55,7 +53,7 @@ const TableItem = (props) => {
     ]);
     dispatch(selectItemsActions.selectcheckbox(props));
   };
-
+  
 
   return (
     <div className="row">
@@ -83,7 +81,6 @@ const TableItem = (props) => {
           props.toDoItem
         )}
       </div>
-      
       <div className="editeButton">
         {isStatus ? (
           <button className="btnSave" onClick={saveItem}>

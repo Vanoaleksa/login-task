@@ -8,7 +8,6 @@ import {
   UPDATE_ITEM,
 } from "./selectItemsConstans";
 
-
 const initialState = {
   selectItems: [
     { id: 0, toDoItem: "Meeting 14:00", isChecked: false },
@@ -27,16 +26,24 @@ export const selectItemsReducer = (state = initialState, action) => {
       };
 
     case ADD_ITEM:
-      let newarray = state;
-      let lastIndex = newarray.selectItems[newarray.selectItems.length - 1].id;
-      newarray = [
-        ...newarray.selectItems,
-        { id: lastIndex + 1, country: "", isChecked: false },
-      ];
-      return {
-        ...state,
-        selectItems: newarray,
-      };
+      let newarray = state.selectItems;
+      if (newarray.length > 0) {
+        let lastIndex = newarray[newarray.length - 1].id;
+        newarray = [
+          ...newarray,
+          { id: lastIndex + 1, toDoItem: "", isChecked: false },
+        ];
+        return {
+          ...state,
+          selectItems: newarray,
+        };
+      } else {
+        newarray = [...newarray, { id: 0, toDoItem: "", isChecked: false }];
+        return {
+          ...state,
+          selectItems: newarray,
+        };
+      }
 
     case DELETE_ITEM:
       let payloadDelete = action.payload.selectItems;
@@ -67,11 +74,11 @@ export const selectItemsReducer = (state = initialState, action) => {
 
     case UPDATE_ITEM:
       let actiondata = action.payload.selectItems;
-      console.log('actiond',actiondata)
-     
+      console.log("actiond", actiondata);
+
       return {
         ...state,
-        selectItems: actiondata
+        selectItems: actiondata,
       };
 
     default:
